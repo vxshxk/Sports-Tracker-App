@@ -8,7 +8,10 @@ import 'package:sportstracker/main.dart';
 import 'package:sportstracker/models/models.dart';
 
 class Home extends StatelessWidget {
-  const Home({super.key});
+
+  Home({super.key});
+  String? url;
+  String? team;
 
   @override
   Widget build(BuildContext context) {
@@ -18,38 +21,91 @@ class Home extends StatelessWidget {
           title: Text("Sports Tracker"),
           actions: <Widget>[
             IconButton(
-              icon: Icon(Icons.add),
+              icon: Icon(Icons.sports_soccer),
               onPressed: (() {
-                Navigator.of(context).pushNamed('/new');
-                //BlocProvider.of<SportBloc>(context).add(AddSport());
+                url="football";
+                BlocProvider.of<SportBloc>(context).sportfun(team, url, context);
+              }),
+            ),
+            IconButton(
+              icon: Icon(Icons.sports_basketball),
+              onPressed: (() {
+                url="basketball";
+                BlocProvider.of<SportBloc>(context).sportfun(team, url, context);
+              }),
+            ),
+            IconButton(
+              icon: Icon(Icons.car_crash_outlined),
+              onPressed: (() {
+                url="formula-1";
+                BlocProvider.of<SportBloc>(context).sportfun(team, url, context);
               }),
             )
-
           ],
         ),
         backgroundColor: Colors.black,
-        body: BlocConsumer<SportBloc,SportState>(
-          builder: (BuildContext context, state) {
-            if (state is Loading) {
-              return CircularProgressIndicator();
-            } else if (state is AddedNew) {
-              return ListView(
-                children: widgetsList,
-              );
-            }else return Placeholder();
+        body: Column(
+          children: [
+            Row(
+              children: [
+                Expanded(
+                  flex: 10,
+                  child: Container(
+                    margin: EdgeInsets.all(15.0),
+                    decoration: BoxDecoration(
+                      border: Border.all(
+                        color: Colors.blue[800]!,
+                        width: 3.0,
+                      ),
+// borderRadius: BorderRadius.circular(25.0)
+                    ),
+                    child: TextField(
+                      onChanged: (val) async {
+                        team = val;
+                      },
+                      style: TextStyle(
+                        color: Colors.amber,
+                      ),
+                      decoration: InputDecoration(
+                        contentPadding: EdgeInsets.symmetric(vertical: 0,
+                            horizontal: 15.0),
+                        hintText: 'Enter Team Name',
+                        hintStyle: TextStyle(
+                          color: Colors.grey,
+                        ),
+                        border: InputBorder.none,
+                      ),
+                    ),
+                  ),
+                ),
 
-          }, listener: (BuildContext context, Object? state) {
-          if (state is AddNew) {
-            Navigator.of(context).pushNamed('/new');
-          } else if(state is Error){
-            widgetsList.add(Container(child: Text("${state.message}"),));
-            BlocProvider.of<SportBloc>(context).emit(AddedNew());
-          }
-        },
+              ],
+            ),
+            BlocConsumer<SportBloc,SportState>(
+              builder: (BuildContext context, state) {
+                if (state is AddedNew) {
+                  return ListView(
+                    children: widgetsList,
+                  );
+                }else return ListView(
+                  children: widgetsList,
+                );
+
+              }, listener: (BuildContext context, Object? state) {
+              if (state is AddNew) {
+                Navigator.of(context).pushNamed('/new');
+              } else if(state is Error){
+                widgetsList.add(Container(child: Text("${state.message}"),));
+                BlocProvider.of<SportBloc>(context).emit(AddedNew());
+              }
+            },
 
 
+            ),
+          ],
         )
 
-    );
+      );
   }
 }
+
