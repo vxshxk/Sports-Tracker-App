@@ -7,7 +7,10 @@ class SportInitial extends SportState {}
 
 class AddNew extends SportState {}
 
-class AddedNew extends SportState {}
+class AddedNew extends SportState {
+  Widget widget;
+  AddedNew(this.widget);
+}
 
 class Loading extends SportState {}
 

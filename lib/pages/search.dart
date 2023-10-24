@@ -15,7 +15,7 @@ class SearchTeam extends StatelessWidget{
   Widget build(BuildContext context) {
 
     return BlocProvider.value(
-      value: SportBloc(),
+      value: sport,
       child: Material(
         color: Colors.black,
         child: Padding(
@@ -62,7 +62,7 @@ class SearchTeam extends StatelessWidget{
                             color: Colors.blue[800]!,
                             iconSize: 30.0,
                             onPressed: () async {
-                              await BlocProvider.of<SportBloc>(context).sportfun(team, url, context);
+                              await BlocProvider.of<SportBloc>(context).sport(team,url,context);
                             },
                             icon: Icon(Icons.search),
                           );

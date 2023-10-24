@@ -10,47 +10,33 @@ class DataTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Material(
-      child: Container(
-        child: Column(
-          children: [
-            Container(
-              decoration: BoxDecoration(
-                color: Colors.black,
-                border: Border.all(
-                  color: Colors.blue[800]!,
-                  width: 2.0,
-                ),
-                //borderRadius: BorderRadius.circular(8.0),
-              ),
-              child: ListTile(
-                leading: Padding(
-                  padding: const EdgeInsets.all(2.0),
-                  child: Row(
-                    children: [
-                      CircleAvatar(
-                        child: Image.network("https://media.api-sports.io/${model.sport}/teams/${model.id}.png"),
-                      ),
-                      SizedBox(width: 10.0,),
-                      Text("${model.name}",style: TextStyle(
-                        color: Colors.amber
-                      ),)
-                    ],
-                  )
-                ),
-                trailing: Text("${model.sport}",style: TextStyle(
-                    color: Colors.amber
-                )),
-              )
-            ),
-            SizedBox(
-              height: 10.0,
-              child: Container(
+      child: Expanded(
+        child: Container(
+          child: Column(
+            children: [
+              Container(
                 decoration: BoxDecoration(
                   color: Colors.black,
+                  border: Border.all(
+                    color: Colors.blue[800]!,
+                    width: 2.0,
+                  ),
+                  //borderRadius: BorderRadius.circular(8.0),
+                ),
+                child: Text("${model.name}",style: TextStyle(
+                  color: Colors.amber
+                ),)
+              ),
+              SizedBox(
+                height: 10.0,
+                child: Container(
+                  decoration: BoxDecoration(
+                    color: Colors.black,
+                  ),
                 ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );;
