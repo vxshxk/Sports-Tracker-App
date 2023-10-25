@@ -67,7 +67,41 @@ class Home extends StatelessWidget {
                 height:MediaQuery.of(context).size.height,
                 child: state.widget
               );
-            }else return Placeholder();
+            }else {
+              return Center(
+                child: Column(
+                  children: [
+                    Expanded(
+                      flex: 5,
+                      child: Container(
+                        width: 100, // Set the width and height as per your requirements
+                        height: 100,
+                        decoration: BoxDecoration(
+                          shape: BoxShape.circle,
+                          //color: Colors.blue, // Background color of the CircleAvatar
+                        ),
+                        child: Center(
+                          child: Icon(
+                            Icons.sports_soccer,
+                            size: 60, // Set the icon size as per your requirements
+                            color: Colors.white, // Color of the icon
+                          ),
+                        ),
+                      ),
+                    ),
+                    Expanded(
+                      flex: 2,
+                      child: Text("Start Adding teams by clicking on + button!",
+                      style: TextStyle(
+                        color: Colors.blue[800],
+                        fontWeight: FontWeight.bold,
+                      ),
+                      ),
+                    )
+                  ],
+                ),
+              );
+            }
 
           }, listener: (BuildContext context, Object? state) {
           if (state is AddNew) {
