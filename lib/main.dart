@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:path_provider/path_provider.dart';
 import 'package:sportstracker/Pages/new_page.dart';
 import 'package:sportstracker/bloc/sport_bloc.dart';
 import 'package:sportstracker/functions/select.dart';
@@ -11,7 +12,7 @@ import 'Pages/home.dart';
 List<Widget> widgetsList=[];
 final SportBloc sport =SportBloc(widgetsList: widgetsList);
 void main() async{
-  await WidgetsFlutterBinding.ensureInitialized();
+  WidgetsFlutterBinding.ensureInitialized();
   runApp(MyApp());
 }
 
@@ -35,7 +36,6 @@ class MyApp extends StatelessWidget {
             value: sport,
             child: NewPage(),
           ) ,
-          '/details': (context) => Detail(),
 
          // '/search': (context) => SearchTeam(),
         },

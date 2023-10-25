@@ -12,9 +12,17 @@ class AddedNew extends SportState {
   AddedNew(this.widget);
 }
 
+
+class Deleted extends SportState {}
+
 class Loading extends SportState {}
 
 class Error extends SportState {
   String? message;
   Error({this.message});
+}
+
+class Stat extends SportState{
+  Widget widget;
+  Stat({required this.widget});
 }
