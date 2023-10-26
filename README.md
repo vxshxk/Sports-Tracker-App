@@ -2,15 +2,22 @@
 
 A new Flutter project.
 
-## Getting Started
+# List of implemented features
+  1. You select one of football,basketball and formula-1 and search for your team to add them to the list of favourites.
+  2. You don't need to enter the full name of your team, keywords are enough!
+  3. Clicking or Tapping on the team tile from faavourites page will show more data/stats ofyour team.
 
-This project is a starting point for a Flutter application.
+# List of planned features
+  1. Feature to fetch previously added favourites from local storage.
+  2. Increase the number of sports.
+  3. Display more stats.
 
-A few resources to get you started if this is your first Flutter project:
+# Bugs/Unimplemented features
+  1. The delete button in the favourites page doesn't work.
+  2. Only use the back button in the app, and not your phone's!
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+# Here's a working video of my app:
+(.apk file is under releases section)
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+https://github.com/vxshxk/wec_gdsc_task_23/assets/115456558/76182887-0130-4084-815e-10f6ad2c6402
+
